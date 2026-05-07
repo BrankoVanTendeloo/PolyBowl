@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://brk8cys38ws4d"]
+
+[ext_resource type="Script" uid="uid://br37ce3034eef" path="res://Scenes/Menus/main_menu.gd" id="1_38aua"]
+
+[node name="MainMenu" type="Control" unique_id=452066802]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38aua")
+
+[node name="Sports" type="VBoxContainer" parent="." unique_id=1085961868]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BowlingButton" type="Button" parent="Sports" unique_id=531552278]
+layout_mode = 2
+text = "Bowling"
+
+[node name="QuitButton" type="Button" parent="Sports" unique_id=327840806]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="mouse_entered" from="Sports/BowlingButton" to="." method="_on_bowling_button_mouse_entered"]
+[connection signal="pressed" from="Sports/BowlingButton" to="." method="_on_bowling_button_pressed"]
+[connection signal="mouse_entered" from="Sports/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="Sports/QuitButton" to="." method="_on_quit_button_pressed"]
