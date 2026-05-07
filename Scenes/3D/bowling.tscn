@@ -1,3 +1,103 @@
 [gd_scene format=3 uid="uid://uug6eojifov2"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_28r54"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28r54"]
+margin = 0.01
+size = Vector3(1.064, 0.1, 19.16)
+
+[sub_resource type="Gradient" id="Gradient_t4blp"]
+offsets = PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)
+colors = PackedColorArray(1, 0.5411765, 0, 1, 1, 0.77254903, 0.3137255, 1, 1, 0.5411765, 0, 1, 1, 0.77254903, 0.3137255, 1, 1, 0.5411765, 0, 1, 1, 0.77254903, 0.3137255, 1, 1, 0.5411765, 0, 1, 1, 0.77254903, 0.3137255, 1, 1, 0.5411765, 0, 1, 1, 0.77254903, 0.3137255, 1, 1, 0.5411765, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_onc3x"]
+gradient = SubResource("Gradient_t4blp")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_wc58i"]
+albedo_texture = SubResource("GradientTexture1D_onc3x")
+
+[sub_resource type="BoxMesh" id="BoxMesh_28r54"]
+material = SubResource("ORMMaterial3D_wc58i")
+size = Vector3(1.064, 0.1, 19.16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4blp"]
+size = Vector3(0.235, 0.05, 19.16)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t4blp"]
+friction = 0.32
+bounce = 0.02
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_onc3x"]
+margin = 0.01
+radius = 0.109
+
+[sub_resource type="Gradient" id="Gradient_28r54"]
+offsets = PackedFloat32Array(0, 0.5217391, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t4blp"]
+gradient = SubResource("Gradient_28r54")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onc3x"]
+albedo_texture = SubResource("GradientTexture2D_t4blp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_28r54"]
+lightmap_size_hint = Vector2i(5, 3)
+material = SubResource("StandardMaterial3D_onc3x")
+radius = 0.109
+height = 0.218
+
 [node name="Bowling" type="Node3D" unique_id=1047850226]
+
+[node name="World" type="Node3D" parent="." unique_id=970535495]
+
+[node name="Alley" type="StaticBody3D" parent="World" unique_id=200949620]
+physics_material_override = SubResource("PhysicsMaterial_28r54")
+
+[node name="AlleyCollision" type="CollisionShape3D" parent="World/Alley" unique_id=1529835138]
+shape = SubResource("BoxShape3D_28r54")
+debug_color = Color(0.8719489, 0.6927292, 0, 1)
+
+[node name="AlleyMesh" type="MeshInstance3D" parent="World/Alley" unique_id=811912039]
+mesh = SubResource("BoxMesh_28r54")
+
+[node name="RightGutter" type="StaticBody3D" parent="World" unique_id=1357996398]
+
+[node name="Gutter" type="CollisionShape3D" parent="World/RightGutter" unique_id=868231334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.05, 0)
+shape = SubResource("BoxShape3D_t4blp")
+debug_color = Color(0.32732415, 0.6239692, 1.1551381e-06, 1)
+
+[node name="LeftGutter" type="StaticBody3D" parent="World" unique_id=1105002293]
+
+[node name="Gutter" type="CollisionShape3D" parent="World/LeftGutter" unique_id=1494871645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.649, -0.05, 0)
+shape = SubResource("BoxShape3D_t4blp")
+debug_color = Color(0.32732415, 0.6239692, 1.1551381e-06, 1)
+
+[node name="Ball" type="RigidBody3D" parent="." unique_id=878216793]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.17, 9.48217)
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_t4blp")
+linear_velocity = Vector3(0, 0, -10)
+angular_velocity = Vector3(174.53293, 0, 17.453293)
+
+[node name="BallCollision" type="CollisionShape3D" parent="Ball" unique_id=1568444616]
+shape = SubResource("SphereShape3D_onc3x")
+debug_color = Color(0, 1, 1, 1)
+
+[node name="BallMesh" type="MeshInstance3D" parent="Ball" unique_id=89575960]
+mesh = SubResource("SphereMesh_28r54")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=678667813]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 6.5, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=271622934]
+transform = Transform3D(1, 0, 0, 0, 0.7767284, 0.62983567, 0, -0.62983567, 0.7767284, 0, 3.387405, 9.687095)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1722089712]
+transform = Transform3D(1, 0, 0, 0, -0.959442, 0.28190628, 0, -0.28190628, -0.959442, 0, 3.387, -9.687)
