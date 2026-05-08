@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://uug6eojifov2"]
 
+[ext_resource type="Script" uid="uid://drwxtuvxwg6tu" path="res://Scenes/3D/bowling.gd" id="1_t4blp"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_28r54"]
 friction = 0.9
 bounce = 0.02
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_28r54"]
 margin = 0.01
-size = Vector3(1.064, 0.1, 19.16)
+size = Vector3(1, 0.1, 20)
 
 [sub_resource type="Gradient" id="Gradient_t4blp"]
 offsets = PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)
@@ -21,10 +23,10 @@ albedo_texture = SubResource("GradientTexture1D_onc3x")
 
 [sub_resource type="BoxMesh" id="BoxMesh_28r54"]
 material = SubResource("ORMMaterial3D_wc58i")
-size = Vector3(1.064, 0.1, 19.16)
+size = Vector3(1, 0.1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4blp"]
-size = Vector3(0.235, 0.05, 19.16)
+size = Vector3(2, 0.05, 20)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t4blp"]
 friction = 0.32
@@ -50,7 +52,20 @@ material = SubResource("StandardMaterial3D_onc3x")
 radius = 0.109
 height = 0.218
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_onc3x"]
+bounce = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t4blp"]
+margin = 0.01
+height = 0.3
+radius = 0.05
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t4blp"]
+radius = 0.05
+height = 0.3
+
 [node name="Bowling" type="Node3D" unique_id=1047850226]
+script = ExtResource("1_t4blp")
 
 [node name="World" type="Node3D" parent="." unique_id=970535495]
 
@@ -67,14 +82,14 @@ mesh = SubResource("BoxMesh_28r54")
 [node name="RightGutter" type="StaticBody3D" parent="World" unique_id=1357996398]
 
 [node name="Gutter" type="CollisionShape3D" parent="World/RightGutter" unique_id=868231334]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.05, 0)
 shape = SubResource("BoxShape3D_t4blp")
 debug_color = Color(0.32732415, 0.6239692, 1.1551381e-06, 1)
 
 [node name="LeftGutter" type="StaticBody3D" parent="World" unique_id=1105002293]
 
 [node name="Gutter" type="CollisionShape3D" parent="World/LeftGutter" unique_id=1494871645]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.649, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.05, 0)
 shape = SubResource("BoxShape3D_t4blp")
 debug_color = Color(0.32732415, 0.6239692, 1.1551381e-06, 1)
 
@@ -83,7 +98,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.17, 9.
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_t4blp")
 linear_velocity = Vector3(0, 0, -10)
-angular_velocity = Vector3(174.53293, 0, 17.453293)
+angular_velocity = Vector3(174.53293, 0, 8.726646)
 
 [node name="BallCollision" type="CollisionShape3D" parent="Ball" unique_id=1568444616]
 shape = SubResource("SphereShape3D_onc3x")
@@ -92,8 +107,151 @@ debug_color = Color(0, 1, 1, 1)
 [node name="BallMesh" type="MeshInstance3D" parent="Ball" unique_id=89575960]
 mesh = SubResource("SphereMesh_28r54")
 
+[node name="Pins" type="Node3D" parent="." unique_id=200407148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Pin01" type="RigidBody3D" parent="Pins" unique_id=924141053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin01" unique_id=1625015656]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin01" unique_id=855806514]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin02" type="RigidBody3D" parent="Pins" unique_id=794392808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.22, -0.2)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin02" unique_id=1885591308]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin02" unique_id=1775701595]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin03" type="RigidBody3D" parent="Pins" unique_id=249254698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.22, -0.2)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin03" unique_id=1954971702]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin03" unique_id=1679504603]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin04" type="RigidBody3D" parent="Pins" unique_id=97583841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.22, -0.4)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin04" unique_id=1018359405]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin04" unique_id=136249745]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin05" type="RigidBody3D" parent="Pins" unique_id=1183268733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -0.4)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin05" unique_id=68728169]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin05" unique_id=567908903]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin06" type="RigidBody3D" parent="Pins" unique_id=1368651368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.22, -0.4)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin06" unique_id=2127565477]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin06" unique_id=1136106072]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin07" type="RigidBody3D" parent="Pins" unique_id=657266382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.22, -0.6)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin07" unique_id=1589948610]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin07" unique_id=1146035790]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin08" type="RigidBody3D" parent="Pins" unique_id=826887425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.22, -0.6)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin08" unique_id=1988632746]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin08" unique_id=401303760]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin09" type="RigidBody3D" parent="Pins" unique_id=10712833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.22, -0.6)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin09" unique_id=965545877]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin09" unique_id=1653940441]
+mesh = SubResource("CapsuleMesh_t4blp")
+
+[node name="Pin10" type="RigidBody3D" parent="Pins" unique_id=715054522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.22, -0.6)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_onc3x")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.05, 0)
+angular_damp = 1.0
+
+[node name="PinCollision" type="CollisionShape3D" parent="Pins/Pin10" unique_id=355796775]
+shape = SubResource("CylinderShape3D_t4blp")
+
+[node name="PinMesh" type="MeshInstance3D" parent="Pins/Pin10" unique_id=166039593]
+mesh = SubResource("CapsuleMesh_t4blp")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=678667813]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 6.5, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 7, 0)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=271622934]
