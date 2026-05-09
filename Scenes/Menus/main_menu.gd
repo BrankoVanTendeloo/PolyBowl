@@ -8,6 +8,7 @@ func _ready() -> void:
 
 
 ### Button presses
+
 func _on_bowling_button_pressed() -> void:
 	print("LOADING BOWLING SCENE")
 	get_tree().change_scene_to_file("res://Scenes/3D/bowling.tscn")
@@ -17,7 +18,8 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
-### Button focus grabbers.
+### Button focus grabbers
+
 func _on_bowling_button_mouse_entered() -> void:
 	BowlingButton.grab_focus()
 

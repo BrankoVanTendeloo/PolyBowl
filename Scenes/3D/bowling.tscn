@@ -89,10 +89,8 @@ debug_color = Color(0.8801967, 0.00038138806, 0.82755566, 1)
 
 [node name="Ball" type="RigidBody3D" parent="." unique_id=878216793]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.17, 9.48217)
-mass = 5.0
+mass = 6.0
 physics_material_override = SubResource("PhysicsMaterial_t4blp")
-linear_velocity = Vector3(-0.4, 0, -10)
-angular_velocity = Vector3(174.53293, 0, -52.35988)
 
 [node name="BallCollision" type="CollisionShape3D" parent="Ball" unique_id=1568444616]
 shape = SubResource("SphereShape3D_onc3x")
@@ -106,7 +104,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
 [node name="Pin01" type="RigidBody3D" parent="Pins" unique_id=924141053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -120,7 +118,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin02" type="RigidBody3D" parent="Pins" unique_id=794392808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.22, -0.2)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -134,7 +132,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin03" type="RigidBody3D" parent="Pins" unique_id=249254698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.22, -0.2)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -148,7 +146,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin04" type="RigidBody3D" parent="Pins" unique_id=97583841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.22, -0.4)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -162,7 +160,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin05" type="RigidBody3D" parent="Pins" unique_id=1183268733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -0.4)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -176,7 +174,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin06" type="RigidBody3D" parent="Pins" unique_id=1368651368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.22, -0.4)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -190,7 +188,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin07" type="RigidBody3D" parent="Pins" unique_id=657266382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.22, -0.6)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -204,7 +202,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin08" type="RigidBody3D" parent="Pins" unique_id=826887425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.22, -0.6)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -218,7 +216,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin09" type="RigidBody3D" parent="Pins" unique_id=10712833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.22, -0.6)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
@@ -232,7 +230,7 @@ mesh = SubResource("CapsuleMesh_t4blp")
 
 [node name="Pin10" type="RigidBody3D" parent="Pins" unique_id=715054522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.22, -0.6)
-mass = 0.3
+mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_onc3x")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.05, 0)
